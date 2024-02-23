@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2018 LG Electronics, Inc.
+// Copyright (c) 2009-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
 #include "db/MojDbKind.h"
 #include "db/MojDb.h"
 
-MojDbSearchCursor::MojDbSearchCursor(MojString localeStr)
+MojDbSearchCursor::MojDbSearchCursor(const MojString& localeStr)
 : m_limit(0),
   m_pos(nullptr),
   m_locale(localeStr),

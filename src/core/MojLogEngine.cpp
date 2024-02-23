@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2018 LG Electronics, Inc.
+// Copyright (c) 2009-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -283,20 +283,12 @@ void MojLogEngine::log(MojLogger::Level level, MojLogger* logger, const MojChar*
 	MojAssertNoLog(logger && format);
 	MojAssert(m_appender);
 
-	// prevent recursive logging of errors that occur during logging
-	MojThreadIdT self = MojThreadCurrentId();
-	if (m_logThread == self)
-		return;
-
 	// suppress logger name for traces and error macros
 	if (level == MojLogger::LevelTrace || logger == &m_errorLogger)
 		logger = NULL;
 
 	MojThreadGuard guard(m_mutex);
-	MojAssertNoLog(m_logThread == MojInvalidThreadId);
-	m_logThread = self;
 	(void) m_appender->append(level, logger, format, args);
-	m_logThread = MojInvalidThreadId;
 }
 
 void MojLogEngine::addLogger(MojLogger* logger)

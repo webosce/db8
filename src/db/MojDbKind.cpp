@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2021 LG Electronics, Inc.
+// Copyright (c) 2009-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1057,6 +1057,10 @@ MojErr MojDbKind::removeKind(KindVec& vec, MojDbKind* kind)
 
 	MojSize idx = vec.find(kind);
 	MojAssert(idx != MojInvalidIndex);
+        if (idx == MojInvalidKindIndex)
+	{
+		return MojErrNotFound;
+	}
 	MojErr err = vec.erase(idx, 1);
 	MojErrCheck(err);
 

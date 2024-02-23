@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2022 LG Electronics, Inc.
+// Copyright (c) 2009-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ class MojDbSearchCursor : public MojDbCursor
 {
 public:
     MojDbSearchCursor() : m_limit(0), m_pos(nullptr), m_startPos(0), m_count(0), m_collation(MojDbCollationInvalid), m_limitPos(nullptr){}
-    MojDbSearchCursor(MojString locale);
+    MojDbSearchCursor(const MojString& locale);
     ~MojDbSearchCursor() override;
     MojErr close() override;
     MojErr get(MojDbStorageItem*& itemOut, bool& foundOut) override;

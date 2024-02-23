@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2018 LG Electronics, Inc.
+// Copyright (c) 2009-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -156,7 +156,7 @@ public:
 	void limit(MojUInt32 numResults) { m_limit = numResults; }
 	void page(const Page& page) { m_page = page; }
     void kindEngine(MojDbKindEngine* kindEngine) { m_kindEngine = kindEngine; }
-    void locale(MojString locale) { m_locale = locale; }
+    void locale(const MojString& locale) { m_locale = locale; }
 
 	MojErr validate() const;
 	MojErr validateFind() const;

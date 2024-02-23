@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2018 LG Electronics, Inc.
+// Copyright (c) 2009-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -576,7 +576,7 @@ MojErr MojDb::merge(const MojDbQuery& query, const MojObject& props, MojUInt32& 
 	return MojErrNone;
 }
 
-MojErr MojDb::put(MojObject& obj, MojUInt32 flags, MojDbReqRef req, MojString shardId)
+MojErr MojDb::put(MojObject& obj, MojUInt32 flags, MojDbReqRef req, const MojString& shardId)
 {
     LOG_TRACE("Entering function %s", __FUNCTION__);
 
@@ -586,7 +586,7 @@ MojErr MojDb::put(MojObject& obj, MojUInt32 flags, MojDbReqRef req, MojString sh
 	return MojErrNone;
 }
 
-MojErr MojDb::put(MojObject* begin, const MojObject* end, MojUInt32 flags, MojDbReqRef req, MojString shardId)
+MojErr MojDb::put(MojObject* begin, const MojObject* end, MojUInt32 flags, MojDbReqRef req, const MojString& shardId)
 {
     LOG_TRACE("Entering function %s", __FUNCTION__);
 
@@ -608,6 +608,7 @@ MojErr MojDb::put(MojObject* begin, const MojObject* end, MojUInt32 flags, MojDb
         // Shard ID should be registered within shard engine
         bool found = false;
         err = shardEngine()->isIdExist(id, found);
+        MojErrCheck(err);
         if(!found) {
             LOG_WARNING(MSGID_MOJ_DB_WARNING, 0, "Invalid shard ID");
             MojErrThrowMsg(MojErrDbMalformedId, _T("db: Invalid shard ID"));
@@ -1474,7 +1475,7 @@ MojErr MojDb::checkDbVersion(const MojChar* path)
     return MojErrNone;
 }
 
-MojErr MojDb::createVersionFile(const MojChar* path, const MojString versionFileName)
+MojErr MojDb::createVersionFile(const MojChar* path, const MojString& versionFileName)
 {
     LOG_TRACE("Entering function %s", __FUNCTION__);
     MojAssert(path);

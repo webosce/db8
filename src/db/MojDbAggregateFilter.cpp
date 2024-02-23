@@ -1,4 +1,4 @@
-// Copyright (c) 2015-2021 LG Electronics, Inc.
+// Copyright (c) 2015-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -71,7 +71,7 @@ MojErr MojDbAggregateFilter::initAggregateInfo(MojObject obj, MojObject val, Moj
     return MojErrNone;
 }
 
-MojErr MojDbAggregateFilter::getValue(MojString key, MojObject obj, MojObject& valOut, bool& found)
+MojErr MojDbAggregateFilter::getValue(const MojString& key, MojObject obj, MojObject& valOut, bool& found)
 {
     LOG_TRACE("Entering function %s", __FUNCTION__);
 

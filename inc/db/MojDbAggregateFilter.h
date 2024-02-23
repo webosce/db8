@@ -1,4 +1,4 @@
-// Copyright (c) 2015-2018 LG Electronics, Inc.
+// Copyright (c) 2015-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ private:
     typedef MojMap<MojObject, AggregateInfoMap> GroupAggregateMap;
 
     MojErr initAggregateInfo(MojObject obj, MojObject val, MojByte op, AggregateInfo& aggregateInfoOut);
-    MojErr getValue(MojString key, MojObject obj, MojObject& valOut, bool& found);
+    MojErr getValue(const MojString& key, MojObject obj, MojObject& valOut, bool& found);
     MojErr compareKey(const MojRefCountedPtr<MojDbPropExtractor>& extractor, const MojObject& obj1, const MojObject& obj2, int& compareResult) const;
 
     MojDbQuery::AggregateMap m_aggregateProps;

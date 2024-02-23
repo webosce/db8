@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2018 LG Electronics, Inc.
+// Copyright (c) 2009-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -89,6 +89,8 @@ const MojUInt64 MojUInt64Max = 0xFFFFFFFFFFFFFFFFULL;
 const MojSize MojSizeMax = (MojSize) MojUInt64Max;
 const MojSize MojInvalidSize = MojSizeMax;
 const MojSize MojInvalidIndex = MojSizeMax;
+const MojSize MojIdxSizeMax = (MojSize)MojUInt32Max;
+const MojSize MojInvalidKindIndex = MojIdxSizeMax;
 
 #ifdef MOJ_USE_NAME_MAX
 	const MojSize MojNameMax = NAME_MAX;

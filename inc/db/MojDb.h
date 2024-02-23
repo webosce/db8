@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2018 LG Electronics, Inc.
+// Copyright (c) 2009-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -90,8 +90,8 @@ public:
 	MojErr merge(MojObject& obj, MojUInt32 flags = MojDbFlagNone, MojDbReqRef req = MojDbReq()) { return put(obj, flags | MojDbFlagMerge, req); }
 	MojErr merge(MojObject* begin, const MojObject* end, MojUInt32 flags = MojDbFlagNone, MojDbReqRef req = MojDbReq()) { return put(begin, end, flags | MojDbFlagMerge, req); }
 	MojErr merge(const MojDbQuery& query, const MojObject& props, MojUInt32& countOut, MojUInt32 flags = MojDbFlagNone, MojDbReqRef req = MojDbReq());
-    MojErr put(MojObject& obj, MojUInt32 flags = MojDbFlagNone, MojDbReqRef req = MojDbReq(), MojString shardId = MojString());
-    MojErr put(MojObject* begin, const MojObject* end, MojUInt32 flags = MojDbFlagNone, MojDbReqRef req = MojDbReq(), MojString shardId = MojString());
+    MojErr put(MojObject& obj, MojUInt32 flags = MojDbFlagNone, MojDbReqRef req = MojDbReq(), const MojString& shardId = MojString());
+    MojErr put(MojObject* begin, const MojObject* end, MojUInt32 flags = MojDbFlagNone, MojDbReqRef req = MojDbReq(), const MojString& shardId = MojString());
 	MojErr putKind(MojObject& obj, MojUInt32 flags = MojDbFlagNone, MojDbReqRef req = MojDbReq());
 	MojErr putPermissions(MojObject* begin, const MojObject* end, MojDbReqRef req = MojDbReq()) { return putConfig(begin, end, req, m_permissionEngine); }
 	MojErr putQuotas(MojObject* begin, const MojObject* end, MojDbReqRef req = MojDbReq()) { return putConfig(begin, end, req, m_quotaEngine); }
@@ -201,7 +201,7 @@ private:
     MojErr getState(const MojChar* key, MojObject& valOut, bool& found, MojDbReq& req);
 	MojErr updateState(const MojChar* key, const MojObject& val, MojDbReq& req);
 	MojErr checkDbVersion(const MojChar* path);
-    MojErr createVersionFile(const MojChar* path, const MojString versionFileName);
+    MojErr createVersionFile(const MojChar* path, const MojString& versionFileName);
 
 	MojErr beginReq(MojDbReq& req, bool lockSchema = false);
 	MojErr commitKind(const MojString& id, MojDbReq& req, MojErr err);
