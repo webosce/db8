@@ -23,12 +23,12 @@
 
 MojDbSearchCursor::MojDbSearchCursor(const MojString& localeStr)
 : m_limit(0),
- m_pos(nullptr),
- m_locale(localeStr),
- m_startPos(0),
- m_count(0),
- m_collation(MojDbCollationInvalid),
- m_limitPos(nullptr)
+  m_pos(nullptr),
+  m_locale(localeStr),
+  m_startPos(0),
+  m_count(0),
+  m_collation(MojDbCollationInvalid),
+  m_limitPos(nullptr)
 {
 }
 
