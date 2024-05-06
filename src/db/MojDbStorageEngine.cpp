@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2018 LG Electronics, Inc.
+// Copyright (c) 2009-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -100,15 +100,6 @@ MojErr MojDbStorageEngine::createEnv(MojRefCountedPtr<MojDbEnv>& envOut)
             MojErrCheck(err);
             if (!m_factories.get(key, m_factory))
             { MojErrThrowMsg(MojErrDbStorageEngineNotFound, _T("Storage default engine not found")); }
-        }
-        else
-        {
-            if (m_factories.size() != 1) // if none or ambiguous
-            {
-                MojErrThrowMsg(MojErrDbStorageEngineNotFound, _T("Storage engine is not set"));
-            }
-            // lets use that the only one which is present
-            m_factory = *m_factories.begin();
         }
     }
 
