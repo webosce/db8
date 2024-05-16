@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2021 LG Electronics, Inc.
+// Copyright (c) 2009-2024 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -552,6 +552,10 @@ void MojLunaService::Statistic(LSMessage* message)
         char path[100];
         sprintf(path, "/var/db/db8-luna-commands-%d.sh", pid);
         FILE* file = fopen(path, "a+");
+        if (!file) {
+             LOG_DEBUG("Unable to open file.");
+             return;
+        }
         std::string line;
         line = "luna-send -a ";
         line += senderServiceName;
@@ -578,6 +582,11 @@ void MojLunaService::Statistic(LSMessage* message)
         sprintf(path, "/var/db/db8-luna-statistic-%d.txt", pid);
 
         file = fopen(path, "w");
+        if (!file) {
+            LOG_DEBUG("Unable to open file.");
+            return;
+        }
+
         for(const auto& it : m_bytes)
         {
             fputs("Service: ", file);
